@@ -26,3 +26,18 @@ car_model = input("Type a brand and model, such as BMW Z4:\n").upper()
 keys = data[0]
 values = data[1:]
 
+def get_data_cars(car_model):
+    """
+    Get car_model input from the user.
+    Run a for loop and build a dictionary from
+    the two lists keys and values, check if the key 'car_name'
+    of the dictionary is equal to the variable car_model
+    and assign the variable result.
+    """
+    result = []
+    for v in values:
+        my_dict = dict(zip(keys, v))
+        if my_dict['car_name'].upper() == car_model:
+            result.append(my_dict)
+    return result
+
