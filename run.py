@@ -17,10 +17,10 @@ cars = SHEET.worksheet('cars')
 data = cars.get_all_values()
 
 print(80*"*")
-print(30*" " + "WELCOME TO CARS USED")
+print(30*" " + colored("WELCOME TO CARS USED", 'magenta'))
 print(80*"*")
-print(colored("Get a car NOW!", 'red'))
-print(colored("Search a car and get the specs and prices.\n", 'red'))
+print(colored("Get a car NOW!", 'green'))
+print(colored("Search a car and get the specs and prices.\n", 'cyan'))
 car_model = input("Type a brand and model, such as BMW Z4:\n").upper()
 
 keys = data[0]
@@ -47,15 +47,15 @@ while True:
     new_data = get_data_cars(car_model)
 
     if not new_data:
-        print("Car not found")
+        print(colored("Car not found\n", 'red'))
     else:
-        print(colored("Specifications:\n", 'red'))
+        print(colored("Specifications:\n", 'green'))
         for key, value in new_data[0].items():
-            print(colored(f"{key.capitalize()}: {value}", 'blue'))
+            print(colored(f"{key.capitalize()}: {value}\n", 'blue'))
 
-    resposta = input("Would you like to search for another model? Y/N?")
+    resposta = input(colored("Would you like to search for another model? Y/N?\n", 'magenta'))
     if resposta.lower() != "y":
         print("END")
         break
     else:
-        car_model = input("Try another model:").upper()
+        car_model = input("Try another model:\n").upper()
