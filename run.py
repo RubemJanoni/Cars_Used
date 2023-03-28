@@ -26,6 +26,7 @@ car_model = input("Type a brand and model, such as BMW Z4:\n").upper()
 keys = data[0]
 values = data[1:]
 
+
 def get_data_cars(car_model):
     """
     Get car_model input from the user.
@@ -41,7 +42,8 @@ def get_data_cars(car_model):
             result.append(my_dict)
     return result
 
- while True:
+
+while True:
     new_data = get_data_cars(car_model)
 
     if not new_data:
@@ -56,5 +58,4 @@ def get_data_cars(car_model):
         print("END")
         break
     else:
-        car_model = input("Try another model:").upper()   
-
+        car_model = input("Try another model:").upper()
