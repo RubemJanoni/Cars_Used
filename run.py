@@ -41,3 +41,20 @@ def get_data_cars(car_model):
             result.append(my_dict)
     return result
 
+ while True:
+    new_data = get_data_cars(car_model)
+
+    if not new_data:
+        print("Car not found")
+    else:
+        print(colored("Specifications:\n", 'red'))
+        for key, value in new_data[0].items():
+            print(colored(f"{key.capitalize()}: {value}", 'blue'))
+
+    resposta = input("Would you like to search for another model? Y/N?")
+    if resposta.lower() != "y":
+        print("END")
+        break
+    else:
+        car_model = input("Try another model:").upper()   
+
