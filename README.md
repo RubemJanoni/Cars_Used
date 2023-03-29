@@ -16,6 +16,16 @@ When running the code, an excel spreadsheet containing the database, information
 
 Despite running in the terminal, some colors were used through the termcolor library, in an attempt to make it more user-friendly.
 
-![cars used]()
+![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/codep304.jpg)
+
+### Data Model
+
+I decided to use a dictionary to store the information obtained from the database, through a for loop, the information provided by the user is compared with the respective dictionary key, if it matches, return the rest of the information.
+
+### Testing
+
+I have manually tested this project by doing the following:
+- Passed the code through a Code Institute PEP8 linter and comfirmed there are no problems, except for the error E501 (line too long), nothing that interrupts the execution or visualization of the code.
+- Given invalid inputs, the program continues without interruption.
 
 
