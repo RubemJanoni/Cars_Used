@@ -53,7 +53,7 @@ while True:
         for key, value in new_data[0].items():
             print(colored(f"{key.capitalize()}: {value}\n", 'blue'))
 
-    resposta = input(colored("Would you like to search for another model? Y/N?\n", 'magenta'))
+    resposta = input(colored("Would you like to try another model? Y/N?\n", 'magenta'))
     if resposta.lower() != "y":
         print("END")
         break
