@@ -28,4 +28,22 @@ I have manually tested this project by doing the following:
 - Passed the code through a Code Institute PEP8 linter and comfirmed there are no problems, except for the error E501 (line too long), nothing that interrupts the execution or visualization of the code.
 - Given invalid inputs, the program continues without interruption.
 
+![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/codep301.jpg)
+
+### Deployment
+
+This project was deployed Code Institute's mock terminal for Heroku.
+
+- Steps for deployment:
+  - Fork or clone this repository
+  - Create a new Heroku app
+  - Set the buildpacks to Python and Node.js in that order
+  - Link the Heroku app to the repository
+  - Click on deploy
+
+### Credits
+
+- Code Institute for the deployment terminal.
+- Kaggle for dataset used in this project. (kaggle.com)
+
 
