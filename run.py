@@ -70,7 +70,109 @@ def delete_data(model):
         if model == str(cars.range(f'A{i}').value):
             cars.range(f'A{i}').api.Delete(DeleteShiftDirection.xlShiftUp)
             a = True
-            print("\nVeículo removido com sucesso!")
+            print("\nCar removed successfully!")
     return a
 
 
+print(80 * "*")
+print(30 * " " + colored("WELCOME TO CARS USED", 'magenta'))
+print(80 * "*")
+while True:
+    menu = ""
+    print("Menu:\n"
+          "1 - Search a car\n"
+          "2 - Add a car on the DATABASE\n"
+          "3 - Delete\n"
+          "4 - Exit")
+    while True:
+        menu = str(input("Choose an Option: "))
+        if menu != '1' and menu != '2' and menu != '3' and menu != '4':
+            print("Invalid Input, try again.")
+        else:
+            print()
+            break
+    if menu == "4":
+        print("END")
+        break
+    else:
+        while True:
+            wb = xw.Book('cars_used.xlsx')
+            cars = wb.sheets('cars')
+            carsRange = cars.used_range
+            data = carsRange.value
+            keys = data[0]
+            ultimlin = carsRange[-1].row
+
+            if menu == "1":
+                print(colored("Get a car NOW!", 'green'))
+                print(colored("Search a car and get the specs and prices.\n", 'cyan'))
+                car_model = input("Type a brand and model, such as BMW Z4:\n").upper()
+                new_data = get_data_cars(car_model)
+                if not new_data:
+                    print(colored("Car not found", 'red'))
+                    menu = input("1 - Search a new car\n"
+                                 "2 - Register a new car\n"
+                                 "3 - Back to Menu\n"
+                                 "Choose an option above: ")
+                    while menu != "1" and menu != "2" and menu != "3":
+                        resposta = input("Invalid input.\n")
+                    if menu == "3":
+                        menu = ""
+                        break
+                else:
+                    print(colored("Specifications:\n", 'green'))
+                    for key, value in new_data[0].items():
+                        print(colored(f"{key.capitalize()}: {value}\n", 'blue'))
+                    resposta = input(colored("Would you like to try another model? Y/N?\n", 'magenta'))
+                    resposta = error_text(resposta.upper())
+                    if resposta.lower() != "y":
+                        print()
+                        break
+                    else:
+                        print()
+            elif menu == "2":
+                while True:
+                    carsRange = cars.used_range
+                    ultimlin = carsRange[-1].row
+                    print("Enter vehicle specifications.")
+                    new_car()
+                    resposta = input("Would you like a new register? Y/N?\n").upper()
+                    resposta = error_text(resposta)
+                    if resposta.lower() != "y":
+                        menu = ""
+                        print()
+                        break
+                    else:
+                        print()
+                        continue
+            elif menu == "3":
+                while True:
+                    carsRange = cars.used_range
+                    ultimlin = carsRange[-1].row
+                    car_model = input("Type a brand and model, such as BMW Z4:\n").upper()
+                    achou = delete_data(car_model)
+                    if achou is False:
+                        print(colored("Car not found", 'red'))
+                        resposta = input("1 - Delete another car\n"
+                                     "2 - Back to menu\n"
+                                     "Choose an option above: ")
+                        while resposta != "1" and resposta != "2":
+                            resposta = input("Invalid Input, try again.\n")
+                        if resposta == "1":
+                            menu = "3"
+                            break
+                        elif resposta == "2":
+                            menu = ""
+                            break
+                    else:
+                        resposta = input(colored("Would you like to try another model? Y/N?\n", 'magenta'))
+                        resposta = error_text(resposta.upper())
+                        if resposta.lower() != "y":
+                            menu = ""
+                            print()
+                            break
+                        else:
+                            print()
+                            break
+            else:
+                break
