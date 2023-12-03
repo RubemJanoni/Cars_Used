@@ -1,6 +1,8 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from termcolor import colored
+import xlwings as xw
+from xlwings.constants import DeleteShiftDirection
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -27,6 +29,15 @@ keys = data[0]
 values = data[1:]
 
 
+#Get a new data from user and add to worksheet
+def new_car():
+    newCar = []
+    for c in keys:
+        newCar.append(str(input(f'{c}: ')).upper())
+    cars.range(f'A{ultimlin + 1}').value = newCar
+    wb.save('cars_used.xlsx')
+    print("\nCadastro realizado com sucesso!")
+
 def get_data_cars(car_model):
     """
     Get car_model input from the user.
@@ -35,27 +46,10 @@ def get_data_cars(car_model):
     of the dictionary is equal to the variable car_model
     and assign the variable result.
     """
+    values = data[1:]
     result = []
     for v in values:
         my_dict = dict(zip(keys, v))
         if my_dict['car_name'].upper() == car_model:
             result.append(my_dict)
     return result
-
-
-while True:
-    new_data = get_data_cars(car_model)
-
-    if not new_data:
-        print(colored("Car not found\n", 'red'))
-    else:
-        print(colored("Specifications:\n", 'green'))
-        for key, value in new_data[0].items():
-            print(colored(f"{key.capitalize()}: {value}\n", 'blue'))
-
-    resposta = input(colored("Would you like to try another model? Y/N?\n", 'magenta'))
-    if resposta.lower() != "y":
-        print("END")
-        break
-    else:
-        car_model = input("Try another model:\n").upper()
