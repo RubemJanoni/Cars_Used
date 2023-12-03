@@ -4,6 +4,8 @@ from termcolor import colored
 import xlwings as xw
 from xlwings.constants import DeleteShiftDirection
 
+xw.serve()
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -18,12 +20,6 @@ SHEET = GSPREAD_CLIENT.open('cars_used')
 cars = SHEET.worksheet('cars')
 data = cars.get_all_values()
 
-print(80*"*")
-print(30*" " + colored("WELCOME TO CARS USED", 'magenta'))
-print(80*"*")
-print(colored("Get a car NOW!", 'green'))
-print(colored("Search a car and get the specs and prices.\n", 'cyan'))
-car_model = input("Type a brand and model, such as BMW Z4:\n").upper()
 
 keys = data[0]
 values = data[1:]
