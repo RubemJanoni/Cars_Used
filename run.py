@@ -36,7 +36,7 @@ def new_car():
         newCar.append(str(input(f'{c}: ')).upper())
     cars.range(f'A{ultimlin + 1}').value = newCar
     wb.save('cars_used.xlsx')
-    print("\nCadastro realizado com sucesso!")
+    print("\nRegistration completed successfully.!")
 
 def get_data_cars(car_model):
     """
@@ -53,3 +53,24 @@ def get_data_cars(car_model):
         if my_dict['car_name'].upper() == car_model:
             result.append(my_dict)
     return result
+
+# user answer validation function
+def error_text(r):
+    while r != "Y" and r != "N" and r != "YES" and r != "NO":
+        r = input("Invalid Input. Try again.\n").upper()
+    if r == "YES":
+        r = "Y"
+    elif r == "NO":
+        r = "N"
+    return r
+
+def delete_data(model):
+    a = False
+    for i in range(1, ultimlin + 1):
+        if model == str(cars.range(f'A{i}').value):
+            cars.range(f'A{i}').api.Delete(DeleteShiftDirection.xlShiftUp)
+            a = True
+            print("\nVeículo removido com sucesso!")
+    return a
+
+
