@@ -1,10 +1,9 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from termcolor import colored
-import xlwings as xw
-from xlwings.constants import DeleteShiftDirection
 
-xw.serve()
+
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -27,12 +26,15 @@ values = data[1:]
 
 #Get a new data from user and add to worksheet
 def new_car():
-    newCar = []
-    for c in keys:
-        newCar.append(str(input(f'{c}: ')).upper())
-    cars.range(f'A{ultimlin + 1}').value = newCar
-    wb.save('cars_used.xlsx')
-    print("\nRegistration completed successfully.!")
+    new_car_data = {}
+    for key in keys:
+        new_car_data[key] = str(input(f'{key}: ')).upper()
+
+    ultimlin = len(values) + 2  # Obtém a próxima linha disponível
+    cars.insert_row(list(new_car_data.values()), index=ultimlin)
+
+    print("\nRegistration completed successfully!")
+
 
 def get_data_cars(car_model):
     """
@@ -61,13 +63,14 @@ def error_text(r):
     return r
 
 def delete_data(model):
-    a = False
-    for i in range(1, ultimlin + 1):
-        if model == str(cars.range(f'A{i}').value):
-            cars.range(f'A{i}').api.Delete(DeleteShiftDirection.xlShiftUp)
-            a = True
+    data = cars.get_all_values()
+    for i, row in enumerate(data[1:], start=2):
+        if model == row[0]:
+            cars.delete_rows(i)
             print("\nCar removed successfully!")
-    return a
+            return True
+    print(colored("Car not found", 'red'))
+    return False
 
 
 print(80 * "*")
@@ -92,24 +95,23 @@ while True:
         break
     else:
         while True:
-            wb = xw.Book('cars_used.xlsx')
-            cars = wb.sheets('cars')
-            carsRange = cars.used_range
-            data = carsRange.value
+            cars = SHEET.worksheet('cars')
+            data = cars.get_all_values()
             keys = data[0]
-            ultimlin = carsRange[-1].row
+            values = data[1:]
 
             if menu == "1":
                 print(colored("Get a car NOW!", 'green'))
                 print(colored("Search a car and get the specs and prices.\n", 'cyan'))
-                car_model = input("Type a brand and model, such as BMW Z4:\n").upper()
+                car_model = input("Type a brand and model, like BMW Z4:\n").upper()
                 new_data = get_data_cars(car_model)
                 if not new_data:
-                    print(colored("Car not found", 'red'))
+                    print(colored("CAR NOT FOUND", 'red'))
+                    print(colored("Choose an option below:", 'green'))
                     menu = input("1 - Search a new car\n"
                                  "2 - Register a new car\n"
-                                 "3 - Back to Menu\n"
-                                 "Choose an option above: ")
+                                 "3 - Back to Menu\n")
+                                 
                     while menu != "1" and menu != "2" and menu != "3":
                         resposta = input("Invalid input.\n")
                     if menu == "3":
@@ -128,8 +130,8 @@ while True:
                         print()
             elif menu == "2":
                 while True:
-                    carsRange = cars.used_range
-                    ultimlin = carsRange[-1].row
+                    data = cars.get_all_values()
+                    values = data[1:]
                     print("Enter vehicle specifications.")
                     new_car()
                     resposta = input("Would you like a new register? Y/N?\n").upper()
@@ -143,8 +145,8 @@ while True:
                         continue
             elif menu == "3":
                 while True:
-                    carsRange = cars.used_range
-                    ultimlin = carsRange[-1].row
+                    data = cars.get_all_values()
+                    values = data[1:]
                     car_model = input("Type a brand and model, such as BMW Z4:\n").upper()
                     achou = delete_data(car_model)
                     if achou is False:
