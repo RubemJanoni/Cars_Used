@@ -4,6 +4,8 @@ Cars Used is a Python terminal code which runs in the Code Institute mock termin
 
 The Cars Used code aims to offer to the user the experience of consulting the desired car in the database and obtaining technical information about the car.
 
+The user can also enter any car model and its specifications into our database, but there is also the option to delete a specific vehicle from the database. The database has been recorded in a spreadsheet hosted on Google Cloud.
+
 The live link can be found here - [Cars Used](https://carsused.herokuapp.com/)
 
 ![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/codep302.jpg)
@@ -21,6 +23,8 @@ Despite running in the terminal, some colors were used through the termcolor lib
 ### Data Model
 
 I decided to use a dictionary to store the information obtained from the database, through a for loop, the information provided by the user is compared with the respective dictionary key, if it matches, return the rest of the information.
+
+The project model basically consists of four functions and a while loop. The first function, "new_car()," handles the insertion of data into the spreadsheet, taking user input and inserting it into the last row of the spreadsheet. The second function, "get_data_cars()," receives the user's car model and checks if it exists in the spreadsheet, returning the result if positive. The third function, "error_test()," deals with possible user input errors. The last function, "delete_data()," is responsible for deleting a specific car in the spreadsheet as entered by the user.
 
 ### Testing
 
