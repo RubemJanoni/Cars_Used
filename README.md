@@ -50,7 +50,13 @@ I have manually tested this project by doing the following:
 - Passed the code through a Code Institute PEP8 linter and comfirmed there are no problems, except for the error w292 (no newline at the end of line), nothing that interrupts the execution or visualization of the code.
   
 
-![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/testpp8.jpg)
+### Validator Testing
+
+    "No error that could compromise the system's functionality was returned."
+
+
+
+
 
 ### Deployment
 
