@@ -20,6 +20,12 @@ Despite running in the terminal, some colors were used through the termcolor lib
 
 ![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/codep304.jpg)
 
+Through option 1 in the menu, the user can search for a car in the database.
+
+![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela01.jpg)
+
+
+
 ### Data Model
 
 I decided to use a dictionary to store the information obtained from the database, through a for loop, the information provided by the user is compared with the respective dictionary key, if it matches, return the rest of the information.
