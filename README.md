@@ -52,7 +52,7 @@ I have manually tested this project by doing the following:
 
 ### Validator Testing
 
--PP8
+- PP8
 
     No error that could compromise the system's functionality was returned.
 
