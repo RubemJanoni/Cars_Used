@@ -17,6 +17,7 @@ When running the code, an excel spreadsheet containing the database, information
 ### Features
 
 Despite running in the terminal, some colors were used through the termcolor library, in an attempt to make it more user-friendly.
+In this project, the gspread and google-auth libraries were also used.
 
 ![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/codep304.jpg)
 
@@ -34,10 +35,7 @@ In option 2 of the menu (Add a car), the user can insert a vehicle of their choi
 
 ![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela04.jpg)
 
-
-
-
-
+Options 3 (Delete) and (Exit) allow the user, respectively, to DELETE a vehicle from the spreadsheet and EXIT the system at any time.
 
 
 ### Data Model
