@@ -24,9 +24,11 @@ Through option 1 in the menu (Search a car), the user can search for a car in th
 
 ![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela01.jpg)
 
+![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela02.jpg)
+
 Thus, the user receives, as a response, a list of the car specifications, such as fuel type, power, torque, engine, and price.
 
-![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela02.jpg)
+![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela03.jpg)
 
 
 
