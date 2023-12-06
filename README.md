@@ -20,9 +20,13 @@ Despite running in the terminal, some colors were used through the termcolor lib
 
 ![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/codep304.jpg)
 
-Through option 1 in the menu, the user can search for a car in the database.
+Through option 1 in the menu (Search a car), the user can search for a car in the database.
 
 ![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela01.jpg)
+
+Thus, the user receives, as a response, a list of the car specifications, such as fuel type, power, torque, engine, and price.
+
+![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela02.jpg)
 
 
 
