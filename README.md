@@ -30,6 +30,14 @@ Thus, the user receives, as a response, a list of the car specifications, such a
 
 ![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela03.jpg)
 
+In option 2 of the menu (Add a car), the user can insert a vehicle of their choice into the database, starting with the model name.
+
+![cars used](https://github.com/RubemJanoni/Cars_Used/blob/main/views/pp3-tela04.jpg)
+
+
+
+
+
 
 
 ### Data Model
